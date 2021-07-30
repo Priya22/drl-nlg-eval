@@ -1,0 +1,4 @@
+{'area': 0, 'customerRating': 1, 'eatType': 2, 'familyFriendly': 3, 'food': 4, 'name': 5, 'near': 6, 'priceRange': 7}
+
+
+{'AGREEABLE': 0, 'EXTRAVERT': 1, 'DISAGREEABLE': 2, 'CONSCIENTIOUSNESS': 3, 'UNCONSCIENTIOUSNESS': 4}   

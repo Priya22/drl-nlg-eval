@@ -1,0 +1,130 @@
+common:
+  warmup: -1
+  num_epochs: 25
+  pretrain_epochs: 3
+  batch_size: 64
+  resume: 1
+  seed: 1111
+  cuda: True
+  log_interval: 100
+  cycle: 500
+  vocab:
+    vocab_size: 10000
+  model:
+    batch_size: 64
+    dropout: 0.2
+    dim_emb: 32
+    lr: 0.001
+    beta: 0.1
+    max_grad_norm: 5
+    noise: '0,0.2,0,4'
+    encoder:
+      dim_h: 64
+      dim_emb: 32 
+      nlayers: 2
+      dropout: 0.2
+    form: 
+      dim_z: 16
+      dim_d: 32
+      n_classes: 5
+      lr: 0.001
+      dim_emb: 32
+      dim_h: 64
+      nlayers: 2
+      dropout: 0.2
+      max_grad_norm: 5
+    content: 
+      dim_z: 16
+      dim_d: 32
+      n_labels: 8
+      lr: 0.001
+      dim_emb: 32
+      dim_h: 64
+      nlayers: 2
+      dropout: 0.2
+      max_grad_norm: 5
+    decoder:
+      dim_emb: 32
+      dim_h: 64
+      dim_z: 32
+      nlayers: 2
+      dropout: 0.2
+      tf_ratio: 0.5
+all:
+  common:
+    type: 'disae'
+    data: 'data/personage-nlg/labelled'
+    save_dir: 'debug_run'
+  model:
+    l_rec: 0.1
+    f_mot: 1
+    f_adv: 1
+    c_mot: 1
+    c_adv: 1
+form:
+  common:
+    type: 'disae'
+    data: 'data/personage-nlg/labelled'
+    save_dir: 'debug_run'
+  model:
+    l_rec: 0.1
+    f_mot: 1
+    f_adv: 1
+    c_mot: 0
+    c_adv: 0
+
+content:
+  common:
+    type: 'disae'
+    data: 'data/personage-nlg/labelled'
+    save_dir: 'debug_run'
+  model:
+    l_rec: 0.1
+    f_mot: 0
+    f_adv: 0
+    c_mot: 1
+    c_adv: 1
+mot:
+  common:
+    type: 'disae'
+    data: 'data/personage-nlg/labelled'
+    save_dir: 'debug_run'
+  model:
+    l_rec: 0.1
+    f_mot: 1
+    f_adv: 0
+    c_mot: 1
+    c_adv: 0
+ae:
+  common:
+    type: 'disae'
+    data: 'data/personage-nlg/labelled'
+    save_dir: 'debug_run'
+  model:
+    l_rec: 1
+    f_mot: 0
+    f_adv: 0
+    c_mot: 0
+    c_adv: 0
+    beta: 0.0
+para:
+  common:
+    type: 'para'
+    data: 'data/personage-nlg/parallel'
+    save_dir: 'debug_run'
+  model:
+    l_rec: 1
+    f_mot: 0
+    f_adv: 0
+    c_para: 1
+para_f:
+  common:
+    type: 'para'
+    data: 'data/personage-nlg/parallel'
+    save_dir: 'debug_run'
+  model:
+    l_rec: 0.1
+    f_mot: 1
+    f_adv: 1
+    c_para: 0.1
+      
